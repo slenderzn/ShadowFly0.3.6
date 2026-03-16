@@ -61,6 +61,10 @@ if getCreatureCondition(cid, CONDITION_OUTFIT) and (item2.uid == cid or getRecor
 	adjustStatus(pk, item.uid, true, false, true)
 
 	doPlayerSay(cid, ""..getPokeName(getCreatureSummons(cid)[1])..", Vamos baixar aqui", 19)
+	local flyy = getPlayerStorageValue(cid, 17000)
+	if flyy == 1 then
+		sendFly(cid, false)
+	end
 	
     doRegainSpeed(cid)
     
