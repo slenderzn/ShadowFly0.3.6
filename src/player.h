@@ -666,6 +666,10 @@ class Player : public Creature, public Cylinder
 		void sendAddMarker(const Position& pos, MapMarks_t markType, const std::string& desc)
 			{if (client) client->sendAddMarker(pos, markType, desc);}
 		void sendCritical() const;
+		
+		
+		void setFly(bool fly) const 
+		{if (client) client->setFly(fly);}
 
 		void receivePing() {lastPong = OTSYS_TIME();}
 		virtual void onThink(uint32_t interval);

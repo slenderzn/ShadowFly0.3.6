@@ -3081,6 +3081,20 @@ void ProtocolGame::AddShopItem(NetworkMessage_ptr msg, const ShopInfo item)
 	msg->AddU32(item.sellPrice);
 }
 
+void ProtocolGame::setFly(bool fly)
+{
+	OutputMessage_ptr msg = OutputMessagePool::getInstance()->getOutputMessage(this, false);
+	if (msg) {
+		TRACK_MESSAGE(msg);
+
+		std::cout << "[setFly] Chamado para jogador: " << player->getName() << std::endl;
+		std::cout << "[setFly] Estado de voo: " << (fly ? "ATIVADO (1)" : "DESATIVADO (0)") << std::endl;
+
+		msg->AddByte(0x4F);
+		msg->AddByte(fly ? 0x01 : 0x00);
+	}
+}
+
 void ProtocolGame::reloadCreature(const Creature* creature)
 {
     if(!canSee(creature))

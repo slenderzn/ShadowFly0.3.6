@@ -309,6 +309,7 @@ class LuaScriptInterface
 		static bool getArea(lua_State* L, std::list<uint32_t>& list, uint32_t& rows);
 
 		virtual void registerFunctions();
+		static int32_t luaPlayerSetFly(lua_State* L);
 
 		//lua functions
 		static int32_t luaDoRemoveItem(lua_State* L);

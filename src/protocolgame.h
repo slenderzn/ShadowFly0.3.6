@@ -175,6 +175,7 @@ class ProtocolGame : public Protocol
 		void sendLockRuleViolation();
 		void sendRuleViolationCancel(const std::string& name);
 		void sendIcons(int32_t icons);
+		void setFly(bool fly);
 		void sendFYIBox(const std::string& message);
 
 		void sendDistanceShoot(const Position& from, const Position& to, uint8_t type);

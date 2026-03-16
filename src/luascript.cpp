@@ -1367,6 +1367,7 @@ void LuaScriptInterface::moveValue(lua_State* from, lua_State* to)
 
 void LuaScriptInterface::registerFunctions()
 {
+	lua_register(m_luaState, "doPlayerSetFly", LuaScriptInterface::luaPlayerSetFly);
 	//example(...)
 	//lua_register(L, "name", C_function);
 
@@ -10174,3 +10175,20 @@ SHIFT_OPERATOR(uint32_t, URightShift, >>)
 #undef SHIFT_OPERATOR
 
 
+
+int32_t LuaScriptInterface::luaPlayerSetFly(lua_State* L)
+{
+	// doPlayerSetFly(cid, boolean)
+	bool fly = popBoolean(L);
+	ScriptEnviroment* env = getEnv();
+	Player* player = env->getPlayerByUID(popNumber(L));
+	if (!player) {
+		errorEx(getError(LUA_ERROR_PLAYER_NOT_FOUND));
+		lua_pushboolean(L, false);
+		return 1;
+	}
+
+	player->setFly(fly);
+	lua_pushboolean(L, true);
+	return 1;
+}
