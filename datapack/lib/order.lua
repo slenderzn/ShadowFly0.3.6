@@ -295,7 +295,7 @@ function recheck(sid, skill, pos)
 		doItemSetAttribute(getPlayerSlotItem(cid, 8).uid, "hp", getCreatureHealth(getCreatureSummons(cid)[1]) / getCreatureMaxHealth(getCreatureSummons(cid)[1]))
 		doRemoveCreature(getCreatureSummons(cid)[1])
 		setPlayerStorageValue(cid, 17000, 1)
-		sendFly(cid, true)
+		doPlayerSetFly(cid, true)
 		local addonfly= getPlayerSlotItem(cid, 8).uid
                 local addofly = getItemAttribute(addonfly,"addonfly")
                 if not getItemAttribute(addonfly,"addonfly") then
